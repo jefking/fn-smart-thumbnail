@@ -8,7 +8,7 @@
             "connection": "Storage"
         },
         {
-            "name": "output",
+            "name": "$return",
             "type": "blob",
             "path": "destination/{filename}",
             "direction": "out",
