@@ -27,7 +27,6 @@ public static async Task Run(Stream input, Stream resized, TraceWriter log)
     {
         content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 
-        // Execute the REST API call.
         response = await client.PostAsync(uri, content);
 
         if (response.IsSuccessStatusCode)
@@ -35,7 +34,7 @@ public static async Task Run(Stream input, Stream resized, TraceWriter log)
             log.Info("\nResponse:\n" + response);
 
             var blob = await response.Content.ReadAsByteArrayAsync();
-            resized = new MemoryStream(blob);
+            resized.Read(blob, 0, blob.Length);
         }
         else
         {
