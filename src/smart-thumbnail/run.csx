@@ -32,7 +32,7 @@ public static async Task Run(Stream input, Stream resized)
             Console.WriteLine(response);
 
             var blob = await response.Content.ReadAsByteArrayAsync();
-            await resized.ReadAsync(blob, 0, blob.Length);
+            resized.Read(blob, 0, blob.Length);
         }
         else
         {
