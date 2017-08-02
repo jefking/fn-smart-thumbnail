@@ -19,7 +19,7 @@ public static async Task<byte[]> Run(Stream input)
     var binaryReader = new BinaryReader(input);
     var byteData = binaryReader.ReadBytes((int)input.Length);
 
-    byte[] blob;
+    byte[] blob = new byte[0];
 
     using (var content = new ByteArrayContent(byteData))
     {
