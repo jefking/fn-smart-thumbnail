@@ -2,7 +2,7 @@
   "frameworks": {
     "net46": {
       "dependencies": {
-        "Azure.Data.Wrappers": "^3.0.0"
+        "Azure.Data.Wrappers": "3.0.0"
       }
     }
   }

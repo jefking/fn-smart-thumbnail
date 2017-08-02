@@ -1,11 +1,10 @@
-#r "Azure.Data.Wrappers"
-
 using System;
 using System.Configuration;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Azure.Data.Wrappers;
 
 private static readonly string storage = ConfigurationManager.AppSettings["Storage"];
 private static readonly string subscriptionKey = ConfigurationManager.AppSettings["SubscriptionKey"];
@@ -39,7 +38,7 @@ public static async Task Run(Stream input, string name, TraceWriter log)
 
             var blob = await response.Content.ReadAsByteArrayAsync();
 
-            var container = new Azure.Data.Wrappers.Container("destination", storage);
+            var container = new Container("destination", storage);
             await container.Save(name, blob);
         }
         else
