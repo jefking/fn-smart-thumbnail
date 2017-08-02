@@ -8,7 +8,7 @@ private static readonly string subscriptionKey = Env("SubscriptionKey");
 private const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
-public static async Task Run(Stream input, Stream resized)
+public static async Task Run(Stream input, Stream resized, TraceWriter log)
 {
     var uri = uriBase + "?width=200&height=150&smartCropping=true";
     var client = new HttpClient();
@@ -28,17 +28,15 @@ public static async Task Run(Stream input, Stream resized)
 
         if (response.IsSuccessStatusCode)
         {
-            Console.WriteLine("\nResponse:\n");
-            Console.WriteLine(response);
+            log.Info("\nResponse:\n" + response);
 
             var blob = await response.Content.ReadAsByteArrayAsync();
             resized = new MemoryStream(blob);
         }
         else
         {
-            Console.WriteLine("\nError:\n");
             var result = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(result);
+            log.Error(result);
         }
     }
 }
