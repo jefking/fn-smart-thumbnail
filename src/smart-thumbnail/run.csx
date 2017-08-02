@@ -11,6 +11,10 @@ private const string uriBase = "https://westcentralus.api.cognitive.microsoft.co
 public static async Task Run(Stream input, Stream resized, TraceWriter log)
 {
     var uri = uriBase + "?width=200&height=150&smartCropping=true";
+
+    log.Info("Subscription Key:\n" + subscriptionKey);
+    log.Info("uri:\n" + uri);
+
     var client = new HttpClient();
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
