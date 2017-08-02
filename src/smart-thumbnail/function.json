@@ -1,8 +1,18 @@
 {
     "bindings": [
         {
+            "name": "input",
+            "type": "blobTrigger",
+            "path": "source/{filename}",
+            "direction": "in",
+            "connection": "Storage"
         },
         {
+            "name": "output",
+            "type": "blob",
+            "path": "destination/{filename}",
+            "direction": "out",
+            "connection": "Storage"
         }
     ],
     "disabled": false

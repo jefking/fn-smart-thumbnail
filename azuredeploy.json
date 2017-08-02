@@ -14,20 +14,6 @@
             "metadata": {
                 "description": "The location to use for creating the function app and hosting plan. It must be one of the Azure locations that support function apps."
             }
-        },
-        "source": {
-            "type": "string",
-            "defaultValue": "images",
-            "metadata": {
-                "description": "Container to upload images into, which will then be processed."
-            }
-        },
-        "destination": {
-            "type": "string",
-            "defaultValue": "json",
-            "metadata": {
-                "description": "Container for results from API; calls will be stored as json."
-            }
         }
     },
     "variables": {
@@ -72,14 +58,6 @@
                         {
                             "name": "Storage",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=',variables('storageName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageName')), '2015-05-01-preview').key1)]"
-                        },
-                        {
-                            "name": "Source",
-                            "value": "[parameter('source')]"
-                        },
-                        {
-                            "name": "Destination",
-                            "value": "[parameter('destination')]"
                         }
                     ]
                 },
