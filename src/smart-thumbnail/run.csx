@@ -8,7 +8,7 @@ private static readonly string subscriptionKey = Env("SubscriptionKey");
 private const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
-public static async void Run(Stream input, Stream resized)
+public static async Task Run(Stream input, Stream resized)
 {
     var uri = uriBase + "?width=200&height=150&smartCropping=true";
     var client = new HttpClient();
