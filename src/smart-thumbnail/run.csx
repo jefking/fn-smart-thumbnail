@@ -17,7 +17,7 @@ public static async Task Run(Stream input, Stream resized)
     HttpResponseMessage response;
 
     var binaryReader = new BinaryReader(input);
-    var byteData = await binaryReader.ReadBytes((int)input.Length);
+    var byteData = binaryReader.ReadBytes((int)input.Length);
 
     using (var content = new ByteArrayContent(byteData))
     {
