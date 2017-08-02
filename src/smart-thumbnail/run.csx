@@ -3,12 +3,14 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using Azure.Data.Wrappers;
 
+private static readonly string storage = Env("Storage");
 private static readonly string subscriptionKey = Env("SubscriptionKey");
 private const string uriBase = "https://westus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
-public static async Task Run(Stream input, Stream resized, TraceWriter log)
+public static async Task Run(Stream input, string name, TraceWriter log)
 {
     var uri = uriBase + "?width=200&height=150&smartCropping=true";
 
@@ -34,7 +36,9 @@ public static async Task Run(Stream input, Stream resized, TraceWriter log)
             log.Info("\nResponse:\n" + response);
 
             var blob = await response.Content.ReadAsByteArrayAsync();
-            resized.Read(blob, 0, blob.Length);
+
+            var container = new Container("destination", storage);
+            await container.Save(name, blob);
         }
         else
         {

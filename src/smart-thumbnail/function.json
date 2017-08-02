@@ -3,15 +3,8 @@
         {
             "name": "input",
             "type": "blobTrigger",
-            "path": "source/{filename}",
+            "path": "source/{name}",
             "direction": "in",
-            "connection": "Storage"
-        },
-        {
-            "name": "resized",
-            "type": "blob",
-            "path": "destination/{filename}",
-            "direction": "out",
             "connection": "Storage"
         }
     ],
