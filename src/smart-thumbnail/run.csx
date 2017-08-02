@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Text;
 
 private static readonly string subscriptionKey = Env("SubscriptionKey");
-private const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
+private const string uriBase = "https://westus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
 public static async Task Run(Stream input, Stream resized, TraceWriter log)
