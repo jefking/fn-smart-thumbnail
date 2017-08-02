@@ -1,13 +1,16 @@
+#r "Azure.Data.Wrappers"
+
 using System;
+using System.Configuration;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Azure.Data.Wrappers;
 
-private static readonly string storage = Env("Storage");
-private static readonly string subscriptionKey = Env("SubscriptionKey");
-private static readonly string uriBase = Env("Url");
+private static readonly string storage = ConfigurationManager.AppSettings["Storage"];
+private static readonly string subscriptionKey = ConfigurationManager.AppSettings["SubscriptionKey"];
+private static readonly string uriBase = ConfigurationManager.AppSettings["Url"];
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
 public static async Task Run(Stream input, string name, TraceWriter log)
