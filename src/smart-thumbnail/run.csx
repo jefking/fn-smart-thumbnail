@@ -7,7 +7,7 @@ using Azure.Data.Wrappers;
 
 private static readonly string storage = Env("Storage");
 private static readonly string subscriptionKey = Env("SubscriptionKey");
-private const string uriBase = "https://westus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail";
+private static readonly string uriBase = Env("Url");
 
 //EXAMPLE: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/csharp#GetThumbnail
 public static async Task Run(Stream input, string name, TraceWriter log)

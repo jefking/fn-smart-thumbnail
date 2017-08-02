@@ -20,6 +20,13 @@
             "metadata": {
                 "description": "Your Subscription Key for Microsoft Cognitive Services, Smart Thumbnails"
             }
+        },
+        "endpoint": {
+            "type": "string",
+            "defaultValue": "https://westus.api.cognitive.microsoft.com/vision/v1.0/generateThumbnail",
+            "metadata": {
+                "description": "Endpoint for Smart Thumbnail Microsoft Cognitive Services."
+            }
         }
     },
     "variables": {
@@ -64,6 +71,10 @@
                         {
                             "name": "SubscriptionKey",
                             "value": "[parameters('subscriptionKey')]"
+                        },
+                        {
+                            "name": "Url",
+                            "value": "[parameters('endpoint')]"
                         },
                         {
                             "name": "Storage",
