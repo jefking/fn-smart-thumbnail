@@ -39,6 +39,7 @@ public static async Task Run(Stream input, string name, TraceWriter log)
             var blob = await response.Content.ReadAsByteArrayAsync();
 
             var container = new Container("destination", storage);
+            await container.CreateIfNotExists();
             await container.Save(name, blob);
         }
         else
